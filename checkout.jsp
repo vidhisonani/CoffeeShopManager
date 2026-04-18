@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout | Coffee Shop</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,50 +20,75 @@
 </nav>
 <div class="container">
 <h2 class="section-title">Checkout</h2>
-<p class="section-sub">Fill your details and confirm your order</p>
+<p class="section-sub">Almost there! Fill in your details and place your order.</p>
 <c:if test="${not empty errorMsg}">
-<div class="alert alert-error">&#9888; ${errorMsg}</div>
+<div class="alert alert-error">&#9888;&nbsp; ${errorMsg}</div>
 </c:if>
+<%-- If cart is empty, redirect them back --%>
+<c:if test="${empty sessionScope.cart}">
+<div class="alert alert-info">
+&#8505;&nbsp; Your cart is empty.
+<a href="menu" style="color:#185FA5; font-weight:600;">Go back to menu</a>
+</div>
+</c:if>
+<c:if test="${not empty sessionScope.cart}">
 <div class="checkout-grid">
-<!-- LEFT: Customer Form -->
 <div class="form-card">
 <h3>Your Details</h3>
 <form action="checkout" method="post">
 <div class="form-group">
 <label>Full Name</label>
-<input type="text" name="customerName" placeholder="e.g. Rahul Shah" required>
+<input type="text" name="customerName"
+placeholder="e.g. Rahul Shah" required
+autocomplete="name">
 </div>
 <div class="form-group">
 <label>Table Number</label>
-<input type="number" name="tableNumber" placeholder="e.g. 5" min="1" max="30" required>
+<input type="number" name="tableNumber"
+placeholder="e.g. 5" min="1" max="50" required>
 </div>
-<button type="submit" class="btn-gold" style="width:100%;padding:13px;font-size:15px;margin-top:8px;">
-Place Order &#8594;
+<button type="submit" class="btn-gold"
+style="width:100%; padding:14px; font-size:15px; margin-top:10px;">
+Place Order &nbsp;&#8594;
 </button>
 </form>
 </div>
-<!-- RIGHT: Order Summary -->
 <div class="form-card">
 <h3>Order Summary</h3>
-<div class="cart-wrapper" style="margin-bottom:0;">
+<div class="cart-wrapper" style="margin-bottom:0; box-shadow:none;">
 <table class="cart-table">
-<tr><th>Item</th><th>Qty</th><th>Subtotal</th></tr>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Subtotal</th>
+</tr>
+</thead>
+<tbody>
 <c:forEach var="item" items="${sessionScope.cart}">
 <tr>
 <td>${item.itemName}</td>
 <td>${item.quantity}</td>
-<td style="color:#C8922A;font-weight:600;">Rs. ${item.subtotal}</td>
+<td style="color:#C8922A; font-weight:600;">
+Rs. ${item.subtotal}
+</td>
 </tr>
 </c:forEach>
+</tbody>
+<tfoot>
 <tr class="total-row">
 <td colspan="2"><b>Total</b></td>
 <td><b>Rs. ${sessionScope.cartTotal}</b></td>
 </tr>
+</tfoot>
 </table>
 </div>
 </div>
 </div>
+</c:if>
 </div>
-<div class="footer"><p>Coffee Shop Manager &mdash;</p></div>
+<div class="footer">
+<p>Made with <span>&#9829;</span> by Team CoffeeShopManager &mdash;</p>
+</div>
 </body>
 </html>
