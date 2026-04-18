@@ -1,10 +1,6 @@
-/* ================================================================
-CoffeeShopManager - Professional UI Stylesheet
-Fonts: Playfair Display (headings) + Poppins (body)
-================================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-/* --- Reset & Base -------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -29,7 +25,6 @@ img {
     max-width: 100%;
 }
 
-/* --- Navbar -------------------------------------------------- */
 .navbar {
     background: #4A2C2A;
     padding: 0 40px;
@@ -90,14 +85,12 @@ img {
     background: #A8731A !important;
 }
 
-/* --- Container ---------------------------------------------- */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 32px 24px;
 }
 
-/* --- Hero Banner (index.jsp) --------------------------------- */
 .hero {
     background: linear-gradient(135deg, #4A2C2A 0%, #6B3D35 50%, #C8922A 100%);
     color: white;
@@ -135,7 +128,6 @@ img {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Section Heading ---------------------------------------- */
 .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 26px;
@@ -149,7 +141,6 @@ img {
     margin-bottom: 24px;
 }
 
-/* --- Category Label ----------------------------------------- */
 .category-label {
     display: inline-block;
     background: #4A2C2A;
@@ -163,7 +154,6 @@ img {
     margin: 28px 0 16px;
 }
 
-/* --- Menu Grid ---------------------------------------------- */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -241,7 +231,6 @@ img {
     box-shadow: 0 0 0 3px rgba(200, 146, 42, 0.15);
 }
 
-/* --- Buttons ------------------------------------------------ */
 .btn-primary {
     width: 100%;
     background: linear-gradient(135deg, #C8922A, #A8731A);
@@ -321,7 +310,6 @@ img {
     color: white;
 }
 
-/* --- Cart Table --------------------------------------------- */
 .cart-wrapper {
     background: white;
     border-radius: 16px;
@@ -396,7 +384,6 @@ img {
     margin-bottom: 20px;
 }
 
-/* --- Checkout Form ------------------------------------------ */
 .checkout-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -454,7 +441,6 @@ img {
     box-shadow: 0 0 0 3px rgba(200, 146, 42, 0.15);
 }
 
-/* --- Order Confirm ------------------------------------------ */
 .confirm-wrapper {
     display: flex;
     justify-content: center;
@@ -538,7 +524,6 @@ img {
     margin: 16px 0;
 }
 
-/* --- Login / Admin Form ------------------------------------- */
 .auth-wrapper {
     display: flex;
     justify-content: center;
@@ -575,7 +560,6 @@ img {
     color: #8B7355;
 }
 
-/* --- Admin Dashboard ---------------------------------------- */
 .admin-navbar {
     background: #2C1810;
     padding: 0 32px;
@@ -740,7 +724,6 @@ img {
     opacity: 0.85;
 }
 
-/* --- Manage Menu Table -------------------------------------- */
 .manage-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -782,7 +765,6 @@ img {
     background: #FDF8F3;
 }
 
-/* --- Report Page -------------------------------------------- */
 .report-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -805,7 +787,6 @@ img {
     border-bottom: 2px solid #F5EFE6;
 }
 
-/* --- Alerts / Messages -------------------------------------- */
 .alert {
     padding: 12px 18px;
     border-radius: 10px;
@@ -834,7 +815,6 @@ img {
     border-left: 4px solid #185FA5;
 }
 
-/* --- Footer ------------------------------------------------- */
 .footer {
     background: #2C1810;
     color: #8B7355;
@@ -848,8 +828,7 @@ img {
     color: #C8922A;
 }
 
-/* --- Responsive --------------------------------------------- */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .menu-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
@@ -879,4 +858,4 @@ img {
     .hero h2 {
         font-size: 28px;
     }
-}
+} */
