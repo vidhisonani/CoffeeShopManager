@@ -15,8 +15,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet("/adminLogin")
+// @WebServlet("/adminLogin")
 public class AdminLoginServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/adminLogin.jsp").forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +33,7 @@ public class AdminLoginServlet extends HttpServlet {
         if (isValidAdmin(username, password)) {
             HttpSession session = request.getSession();
             session.setAttribute("adminUser", username);
-            response.sendRedirect(request.getContextPath() + "/adminDashboard.jsp");
+            response.sendRedirect(request.getContextPath() + "/adminDashboard");
         } else {
             // Invalid credentials — go back with error message
             request.setAttribute("errorMsg", "Invalid username or password.");
@@ -37,14 +42,14 @@ public class AdminLoginServlet extends HttpServlet {
     }
 
     private boolean isValidAdmin(String username, String password) {
-        String sql = "SELECT id FROM admin WHERE username = ? AND password = ?";
+        String sql = "SELECT admin_id FROM admin WHERE username = ? AND password = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, username);
-            ps.setString(2, password);           // Member C hashes passwords in SQL setup
+            ps.setString(2, password); // Member C hashes passwords in SQL setup
             ResultSet rs = ps.executeQuery();
-            return rs.next();                    // true if a matching row exists
+            return rs.next(); // true if a matching row exists
 
         } catch (SQLException e) {
             e.printStackTrace();
