@@ -9,7 +9,7 @@ import java.util.List;
 public class OrderDAO {
 
   // Places full order — inserts into customer_order then each order_item
-  public  int placeOrder(Order order, List<OrderItem> items) {
+  public int placeOrder(Order order, List<OrderItem> items) {
     String orderSql = "INSERT INTO customer_order (customer_name, table_number, total_amount) VALUES (?, ?, ?)";
     String itemSql = "INSERT INTO order_item (order_id, item_id, quantity, subtotal) VALUES (?, ?, ?, ?)";
 

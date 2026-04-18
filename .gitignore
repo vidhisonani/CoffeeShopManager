@@ -1,5 +1,5 @@
 *.class
-webapps/WEB-INF/lib/*.jar
+WEB-INF/lib/*.jar
 *.war
 .idea
 CoffeeShopManager.iml
