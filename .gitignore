@@ -3,3 +3,4 @@ webapp/WEB-INF/lib/*.jar
 *.war
 .idea
 CoffeeShopManager.iml
+/bin/
