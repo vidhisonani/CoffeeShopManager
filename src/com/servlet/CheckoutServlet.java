@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/checkout")
+// @WebServlet("/checkout")
 public class CheckoutServlet extends HttpServlet {
 
     @Override
@@ -26,7 +26,7 @@ public class CheckoutServlet extends HttpServlet {
         // 2. Create the Order object (The first thing your DAO wants)
         model.Order order = new model.Order();
         order.setCustomerName(customerName);
-        order.setTableNumber(1); // Set a default or get from a form parameter
+        order.setTableNumber(Integer.parseInt(request.getParameter("tableNumber"))); // Set a default or get from a form parameter
 
         // 3. Convert Map<Integer, CartItem> to List<OrderItem> (The second thing it wants)
         List<model.OrderItem> orderItems = new java.util.ArrayList<>();
@@ -53,6 +53,8 @@ public class CheckoutServlet extends HttpServlet {
         // Pass order ID to confirmation page
         request.setAttribute("orderId", orderId);
         request.setAttribute("customerName", customerName);
+        request.setAttribute("tableNumber", order.getTableNumber());
+        request.setAttribute("totalAmount", order.getTotalAmount());
         request.getRequestDispatcher("/orderConfirm.jsp").forward(request, response);
     }
 }
