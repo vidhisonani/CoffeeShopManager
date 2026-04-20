@@ -5,6 +5,10 @@ import model.OrderItem;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import model.BestSellerItem;
+import model.DailyRevenue;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class OrderDAO {
 
@@ -83,15 +87,50 @@ public class OrderDAO {
       return false;
     }
   }
+  public List<BestSellerItem> getBestSellers() {
+	    List<BestSellerItem> list = new ArrayList<>();
+	    String sql = "SELECT m.item_name, SUM(oi.quantity) AS totalSold, " +
+	                 "SUM(oi.subtotal) AS revenue " +
+	                 "FROM order_item oi " +
+	                 "JOIN menu_item m ON oi.item_id = m.item_id " +
+	                 "GROUP BY m.item_id, m.item_name " +
+	                 "ORDER BY totalSold DESC";
+	    try (Connection conn = DBConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
 
-  // For the report page
-  public ResultSet getBestSellers() throws SQLException {
-    String sql = "SELECT m.item_name, SUM(oi.quantity) AS total_sold, " +
-        "SUM(oi.subtotal) AS revenue " +
-        "FROM order_item oi " +
-        "JOIN menu_item m ON oi.item_id = m.item_id " +
-        "GROUP BY m.item_id ORDER BY total_sold DESC";
-    Connection con = DBConnection.getConnection();
-    return con.createStatement().executeQuery(sql);
-  }
+	        while (rs.next()) {
+	            String itemName  = rs.getString("item_name");
+	            int totalSold    = rs.getInt("totalSold");
+	            double revenue   = rs.getDouble("revenue");
+	            list.add(new BestSellerItem(itemName, totalSold, revenue));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return list;
+	}
+
+	public List<DailyRevenue> getDailyRevenue() {
+	    List<DailyRevenue> list = new ArrayList<>();
+	    String sql = "SELECT DATE(ordered_at) AS day, COUNT(*) AS orderCount, " +
+	                 "SUM(total_amount) AS dailyTotal " +
+	                 "FROM customer_order " +
+	                 "GROUP BY DATE(ordered_at) " +
+	                 "ORDER BY day DESC";
+	    try (Connection conn = DBConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+
+	        while (rs.next()) {
+	            String day      = rs.getString("day");
+	            int orderCount  = rs.getInt("orderCount");
+	            double daily    = rs.getDouble("dailyTotal");
+	            list.add(new DailyRevenue(day, orderCount, daily));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return list;
+	}
 }
