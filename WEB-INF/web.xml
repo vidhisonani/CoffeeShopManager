@@ -84,7 +84,7 @@ version="3.1">
 <url-pattern>/manageMenu</url-pattern>
 </servlet-mapping>
 
-<servlet-mapping>
+<!-- <servlet-mapping>
 <servlet-name>ReportServlet</servlet-name>
 <url-pattern>/report</url-pattern>
 </servlet-mapping>
@@ -92,7 +92,7 @@ version="3.1">
 <servlet-mapping>
 <servlet-name>ReportPdfServlet</servlet-name>
 <url-pattern>/reportPdf</url-pattern>
-</servlet-mapping>
+</servlet-mapping> -->
 
 <servlet-mapping>
 <servlet-name>AdminLogoutServlet</servlet-name>

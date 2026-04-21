@@ -23,9 +23,9 @@
 <div>
 <h2 class="section-title">Sales Reports</h2>
 <p class="section-sub">Business analytics for your coffee shop</p>
-</div>
+<!-- </div>
 <a href="reportPdf" class="btn-gold">&#11015;&nbsp; Download PDF</a>
-</div>
+</div> -->
 <div class="report-grid">
 <div class="report-card">
 <h3>&#127942; Best-Selling Items</h3>
