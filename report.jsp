@@ -44,11 +44,9 @@
 <td style="color:#C8922A; font-weight:700; font-size:15px;">
 ${s.index + 1}
 </td>
-<td><b>${row.itemName}</b></td>
-<td>${row.totalSold}</td>
-<td style="color:#0F6E56; font-weight:600;">
-Rs.${row.revenue}
-</td>
+<td><b>${row[0]}</b></td>
+<td>${row[1]}</td>
+<td style="color:#0F6E56; font-weight:600;">Rs.${row[2]}</td>
 </tr>
 </c:forEach>
 <c:if test="${empty bestSellers}">
@@ -72,13 +70,11 @@ No sales data yet
 </tr>
 </thead>
 <tbody>
-<c:forEach var="day" items="${dailyRevenue}">
+<c:forEach var="entry" items="${dailyRevenue}">
 <tr>
-<td>${day.day}</td>
-<td>${day.orderCount}</td>
-<td style="color:#C8922A; font-weight:600;">
-Rs.${day.dailyTotal}
-</td>
+<td>${entry.key}</td>
+<td>—</td>
+<td style="color:#C8922A; font-weight:600;">Rs.${entry.value}</td>
 </tr>
 </c:forEach>
 <c:if test="${empty dailyRevenue}">
