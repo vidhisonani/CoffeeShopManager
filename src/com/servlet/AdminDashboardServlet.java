@@ -20,7 +20,7 @@ public class AdminDashboardServlet extends HttpServlet {
 
         // Check admin session
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("admin") == null) {
+        if (session == null || session.getAttribute("adminUser") == null) {
             response.sendRedirect(request.getContextPath() + "/adminLogin");
             return;
         }
@@ -73,7 +73,7 @@ public class AdminDashboardServlet extends HttpServlet {
         request.setAttribute("preparingCount", preparingCount);
         request.setAttribute("todayRevenue", todayRevenue);
 
-        request.getRequestDispatcher("/WEB-INF/views/adminDashboard.jsp")
+        request.getRequestDispatcher("/adminDashboard.jsp")
                .forward(request, response);
     }
 

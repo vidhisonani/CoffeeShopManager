@@ -89,10 +89,17 @@ version="3.1">
 <url-pattern>/report</url-pattern>
 </servlet-mapping>
 
+<<<<<<< HEAD
 <servlet-mapping>
 <servlet-name>ReportPdfServlet</servlet-name>
 <url-pattern>/reportPdf</url-pattern>
 </servlet-mapping>
+=======
+<!-- <servlet-mapping>
+<servlet-name>ReportPdfServlet</servlet-name>
+<url-pattern>/reportPdf</url-pattern>
+</servlet-mapping> -->
+>>>>>>> dc4062979d382aa5a51ea5f75103660b0b235589
 
 <servlet-mapping>
 <servlet-name>AdminLogoutServlet</servlet-name>
