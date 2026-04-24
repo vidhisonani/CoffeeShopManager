@@ -4,3 +4,10 @@ WEB-INF/lib/*.jar
 .idea
 CoffeeShopManager.iml
 /bin/
+.settings/
+.classpath
+.project
+src/main/
+*.iml
+.idea/
+out/
