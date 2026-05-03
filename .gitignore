@@ -11,3 +11,4 @@ src/main/
 *.iml
 .idea/
 out/
+META-INF/
